@@ -119,6 +119,7 @@ class App(customtkinter.CTk):
         self.textbox.insert("0.0","/")
         self.boton1_1.configure(state="disable",fg_color="#56524D",command=None)
         self.textcorrecto3.configure(text=f" 0",text_color="red")
+        self.textcorrectob2.configure(text=f" ",text_color="red")
         self.boton_dl.configure(state="disable",fg_color="#56524D",command=None)
         print("bt delete")
 
@@ -136,7 +137,7 @@ class App(customtkinter.CTk):
         #----
         dt=pd.DataFrame()
         for i in App.conten:
-            self.textcorrectob5.configure(text=f"{round(suma*100,0)}%",text_color="red") 
+            self.textcorrectob5.configure(text=f"{min(round(suma*100,0),100)}%",text_color="red") 
             self.barr.set(suma)
             self.textcorrectob2.configure(text=f"Procesando txt {conteo}/{len(App.conten)}",text_color="red")
             suma += incremento
@@ -156,7 +157,7 @@ class App(customtkinter.CTk):
                     name=f"resultado_{conteo}"
                     break
                 conteo+=1
-        self.textcorrectob5.configure(text=f"{round(suma*100,2)}%",text_color="red") 
+        self.textcorrectob5.configure(text=f"{min(round(suma*100,0),100)}%",text_color="red") 
         self.barr.set(suma)
         suma += incremento
         self.update_idletasks()
